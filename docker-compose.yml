@@ -1,0 +1,20 @@
+version: '3.9d'
+services:
+  server:
+    image: "server"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./server:/app
+    restart: always
+
+
+  client:
+    build: "client"
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./client:/app
+    restart: always
+    depends_on:
+      - server
